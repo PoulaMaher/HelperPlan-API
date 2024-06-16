@@ -1,0 +1,58 @@
+# Ignore Visual Studio temporary files, build results, and
+# User-specific files
+.vscode/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Ignore NuGet packages
+*.nupkg
+*.snupkg
+packages/
+
+# Ignore ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Ignore build results of node_modules
+node_modules/
+jspm_packages/
+
+# Ignore npm debug log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore published output
+wwwroot/
+dist/
+out/
+.publish/
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore secrets files
+secrets.json
+
+# Ignore IDE preferences
+.idea/
+*.sublime-workspace
+*.sublime-project
