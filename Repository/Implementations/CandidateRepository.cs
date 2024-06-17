@@ -20,7 +20,7 @@ namespace HelperPlan.Repository.Implementations
         public IEnumerable<Candidate> filteredcandidate(filtercandidateDTO fcd, string? includeprop = null)
         {
 
-            IQueryable<Candidate> query = GetAll(includeprop).AsQueryable();
+            IQueryable<Candidate> query = GetList(c => c.description != "" || c.description != null && c.Position != "" || c.Position != null && c.PhotoURL != null || c.PhotoURL != "", includeprop).AsQueryable();
 
             //Apply filtering based on provided parameters
             if (!string.IsNullOrEmpty(fcd.Position))
