@@ -43,7 +43,7 @@ namespace HelperPlan.Controllers
         public ActionResult<IEnumerable<Candidate>> GetFilteredCandidates([FromQuery]filtercandidateDTO fcd)
         {
            
-            List<Candidate>? filteredcandidates = unitOfWork.CandidateRepository.filteredcandidate(fcd, "Languages,MainSkills").ToList();
+            List<Candidate>? filteredcandidates = unitOfWork.CandidateRepository.filteredcandidate(fcd , "Languages,MainSkills").ToList();
            
             var candidate = unitOfWork.CandidateRepository.mapandget(filteredcandidates);
             return Ok(candidate);
@@ -61,7 +61,7 @@ namespace HelperPlan.Controllers
         public ActionResult<IEnumerable<candsDTO>> GetAll()
         {
             RecurringJob.AddOrUpdate(() => CheckSubscriptionActivation(), Cron.Daily());
-            IEnumerable<Candidate> allCandidates = unitOfWork.CandidateRepository.GetAll("Languages");
+            IEnumerable<Candidate> allCandidates = unitOfWork.CandidateRepository.GetList( c=> c.description != "" || c.description != null && c.Position != "" || c.Position != null && c.PhotoURL != null || c.PhotoURL != "" , "Languages");
             var candidatesDTO = autoMapper.Map<IEnumerable<candsDTO>>(allCandidates);
             return Ok(candidatesDTO);
         }
