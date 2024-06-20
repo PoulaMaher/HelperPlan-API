@@ -61,7 +61,9 @@ namespace HelperPlan.Controllers
         public ActionResult<IEnumerable<candsDTO>> GetAll()
         {
             RecurringJob.AddOrUpdate(() => CheckSubscriptionActivation(), Cron.Daily());
-            IEnumerable<Candidate> allCandidates = unitOfWork.CandidateRepository.GetList( c=> c.description != "" || c.description != null && c.Position != "" || c.Position != null && c.PhotoURL != null || c.PhotoURL != "" , "Languages");
+            IEnumerable<Candidate> allCandidates = unitOfWork.CandidateRepository.GetList(c => (c.description != null && c.description != "") &&
+         (c.Position != null && c.Position != "") &&
+         (c.PhotoURL != null && c.PhotoURL != ""), "Languages");
             var candidatesDTO = autoMapper.Map<IEnumerable<candsDTO>>(allCandidates);
             return Ok(candidatesDTO);
         }
